@@ -7,15 +7,12 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
   const {deployer} = await getNamedAccounts()
 
-  const isOpen = process.env.OPEN !== undefined
-  console.log("isOpen", isOpen)
-
-  await deploy("Directory", {
+  await deploy("Greeter", {
     from: deployer,
     log: true,
-    args: [isOpen],
+    args: ["Hello, Hardhat!"],
     autoMine: true, // speed up deployment on local network (ganache, hardhat), no effect on live networks
   })
 }
 export default func
-func.tags = ["Directory"]
+func.tags = ["Greeter"]
